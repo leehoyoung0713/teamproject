@@ -40,7 +40,7 @@ public class CommentListOkController implements Execute {
 		HashMap<String,Integer> increment=new HashMap<String, Integer>();
 		increment.put("startIndex", startIndex);
 		
-//		
+//		게시글에 해당하는 초기 댓글수에 스크롤 이벤트시 추가되는 1개의 게시글에 대한 추가댓글들을 조회
 		commentsDAO.selectCommentRow(increment).forEach(comments->{
 			JSONObject jsonObject =new JSONObject(comments);  jsonArray.put(jsonObject);
 		});

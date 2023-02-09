@@ -194,8 +194,8 @@ $(".reviewList").on("click", ".modifyClicked", function(){
 
 /* 수정 확인 버튼 클릭 시 */
 $(".reviewList").on("click", ".deleteClicked", function(){
-	var placeReviewContents = $(".textAreaModify").val();
-	
+	var placeReviewContents = $(".textAreaModify").val().replace(/\</g,'&lt;');
+	placeReviewContents=placeReviewContents.replace(/\>/g,'&gt;');
 	let reviewNumber = $(this).data("number");
 
 	$.ajax({
@@ -1216,7 +1216,10 @@ function resist(){
 	/*formData 생성 및 key, value 삽입*/
    	var formData = new FormData();
 	/*글*/
-	formData.append("placeReviewContents", $(".userCommentWritingSector").val())
+	var modifyCommentSector=$(".userCommentWritingSector").val().replace(/\</g,'&lt;');
+	modifyCommentSector=modifyCommentSector.replace(/\>/g,'&gt;');
+	/*formData.append("placeReviewContents", $(".userCommentWritingSector").val())*/
+	formData.append("placeReviewContents",modifyCommentSector);
 	
 	/*사진*/
 	formData.append("placeReviewFile", $('.cameraImgWrap')[0].files[0])

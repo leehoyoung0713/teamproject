@@ -61,7 +61,4 @@ public class CommentsVO {
 				+ ", commentsContent=" + commentsContent + ", userNumber=" + userNumber + ", postNumber=" + postNumber
 				+ "]";
 	}
-
-	
-	
 }

@@ -30,8 +30,6 @@ public class CommentListFollowerController implements Execute {
 		FollowDAO followerDAO=new FollowDAO();
 		CommentsDAO commentDAO=new CommentsDAO();
 		List<CommentsDTO> followercomments=new ArrayList<>();
-		
-//		초기값 설정
 		int followingNumber=3;
 		
 //		Servlet으로 들어온 요청을 텍스트 형태로 응답하기 위해 출력스트림을 얻어야하므로 getWriter()메서드 사용[바이트를 문자 형태를 가지는 객체로 바꿔준다]

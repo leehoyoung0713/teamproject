@@ -664,6 +664,8 @@ $parentposition.on("click",".replyEnter",function(){
 		alert('댓글을 입력해주세요.');
 		return;
 	}
+	replytext=replytext.replace(/\</g,'&lt;');
+	replytext=replytext.replace(/\>/g,'&gt;');
 	
 	//
 	$.ajax({
@@ -719,7 +721,8 @@ $parentposition.on("click","span.replyCommentModifyWrap",function(){
 	const commentContent=buttonWrap.children().eq(1);
 	const commentNumber=$(this).data("number");
 	
-	var modifyComment=commentContent.val();
+	var modifyComment=commentContent.val().replace(/\</g,'&lt;');
+	modifyComment=modifyComment.replace(/\>/g,'&gt;');
 	if(!modifyComment){
 		alert('댓글을 입력해주세요.');
 		return;
@@ -793,7 +796,8 @@ $parentposition.on("click","span.postContentReadyModifyWrap",function(){
  	const postContent=buttonWrap.prev().prev().find(":first-child");
  	const postNumber=$(this).data("number");
  	
- 	var modifyPost=postContent.val();
+ 	var modifyPost=postContent.val().replace(/\</g,'&lt;');
+ 	modifyPost=modifyPost.replace(/\>/g,'&gt;');
  	if(!modifyPost){
  		alert('게시글 내용을 입력해주세요.');
  		return;
@@ -837,9 +841,18 @@ $("#contentResistButton").click(function (event) {
 	    
 	/*formData 생성 및 key, value 삽입*/
 	   var formData = new FormData();
-		
 	
-	   formData.append("postContent",$("textarea[name='feedMainWriting']").val())
+	  var tempPostContent=$("textarea[name='feedMainWriting']").val().replace(/\</gi,'&lt;');
+	  tempPostContent=tempPostContent.replace(/\>/gi,'&gt;');
+	   if(!tempPostContent){
+			alert('게시글 내용을 입력해주세요.');
+			return;
+	   }
+		console.log(typeof tempPostContent);
+	
+	   console.log(tempPostContent);
+	
+	   formData.append("postContent",tempPostContent)
 	   formData.append("postFile1", $('.realUpload')[0].files[0])  
 	   formData.append("postFile2", $('.realUpload')[0].files[1])
 	   formData.append("postFile3", $('.realUpload')[0].files[2])

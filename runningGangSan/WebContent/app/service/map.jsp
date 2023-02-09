@@ -1216,7 +1216,7 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <!-- 카카오맵 api -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3a1ec4d4442397ef5dc28bccc78eef58&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5d2c50ee9854d5c91e1e42edc701879c&libraries=services"></script>
 <script>var contextPath="${pageContext.request.contextPath}"</script>
 <script>let context = "${pageContext.request.contextPath}"</script>
 <script src="${pageContext.request.contextPath}/assets/js/service/map.js?ver=1"></script>

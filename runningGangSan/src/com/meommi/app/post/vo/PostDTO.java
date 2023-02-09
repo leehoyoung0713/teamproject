@@ -1,6 +1,9 @@
 package com.meommi.app.post.vo;
 
+//댓글 수정, 삭제시 화면에서 입력받을 데이터를 저장하기 위한 PostDTO클래스 선언
 public class PostDTO {
+	
+//	멤버 변수 선언
    private int postNumber; 
    private String postContent;
    private String postDateTime;
@@ -11,8 +14,10 @@ public class PostDTO {
    private String postFilePath;
    private String userId;
 
+//	기본 생성자 선언
    public PostDTO() {;}
 
+//	getter, setter메서드 선언
 	public int getPostNumber() {
 		return postNumber;
 	}
@@ -85,6 +90,7 @@ public class PostDTO {
 		this.userId = userId;
 	}
 	
+//	toString메서드 재정의
 	@Override
 	public String toString() {
 		return "PostDTO [postNumber=" + postNumber + ", postContent=" + postContent + ", postDateTime=" + postDateTime

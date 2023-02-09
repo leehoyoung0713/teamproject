@@ -14,22 +14,40 @@ import com.meommi.app.Execute;
 import com.meommi.app.Result;
 import com.meommi.app.postFile.dao.PostFileDAO;
 
+//Execute 인터페이스를 구현하는 PostFileOkController클래스 선언
 public class PostFileOkController implements Execute {
 
+	//	execute메서드 재정의
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("utf-8");
 		req.setCharacterEncoding("utf-8");
+		
+//		데이터베이스의 data에 접근하기 위한 dao객체 생성
 		PostFileDAO postfileDAO=new PostFileDAO();
+		
+//		파라미터로 넘겨받은 Increment값을 정수로 변환하여 저장
 		int startIndex=Integer.valueOf(req.getParameter("Increment"));
+		
+//		Servlet으로 들어온 요청을 텍스트 형태로 응답하기 위해 출력스트림을 얻어야하므로 getWriter()메서드 사용[바이트를 문자 형태를 가지는 객체로 바꿔준다]
 		PrintWriter out=resp.getWriter();
+		
+//		JSONArray타입의 객체 생성
 		JSONArray jsonArray=new JSONArray();
+		
+//		게시글에 해당하는 초기 파일수에 스크롤 이벤트시 추가되는 1개의 게시글에 대한 추가 파일들을 조회
 		postfileDAO.selectPostfileRow(startIndex).forEach(postfile->{
 			JSONObject fileobject=new JSONObject(postfile); jsonArray.put(fileobject);
 		});
 		System.out.println(jsonArray.toString());
+		
+//		스트림에 jsonArray 기록
 		out.print(jsonArray.toString());
+		
+//		스트림의 내용을 flush메서드를 통해 요청한 client에게 전달해주고 사용된 자원을 반환
 		out.close();
+		
+//		페이지 이동이 없으므로 null반환
 		return null;
 	}
 

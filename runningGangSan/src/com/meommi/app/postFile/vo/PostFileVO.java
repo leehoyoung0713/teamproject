@@ -1,7 +1,9 @@
 package com.meommi.app.postFile.vo;
 
+//댓글 작성시 화면에서 입력받을 데이터를 저장하기 위한 PostFileVO클래스 선언
 public class PostFileVO {
 
+//	멤버 변수 선언
 	private int postFileNumber;
 	private String postFileSystemName;
 	private String postFileOriginName;
@@ -9,8 +11,10 @@ public class PostFileVO {
 	private int postNumber;
 	private int userNumber;
 	
+//	기본 생성자 선언
 	public PostFileVO() {;}
 
+//	getter, setter메서드 선언
 	public int getPostFileNumber() {
 		return postFileNumber;
 	}
@@ -59,14 +63,11 @@ public class PostFileVO {
 		this.userNumber = userNumber;
 	}
 
+//	toString메서드 재정의
 	@Override
 	public String toString() {
 		return "PostFileVO [postFileNumber=" + postFileNumber + ", postFileSystemName=" + postFileSystemName
 				+ ", postFileOriginName=" + postFileOriginName + ", postFilePath=" + postFilePath + ", postNumber="
 				+ postNumber + ", userNumber=" + userNumber +  "]";
 	}
-
-	
-
-	
 }
