@@ -11,28 +11,29 @@
 		order by c.comments_datetime desc
 	</select>
 	
-	<!-- 메서드 이름이 selectCommentDefault이며, 반환타입이 CommentsDTO인 select쿼리문과 매핑(초기 게시글 수에 해당하는 댓글수) -->
+	<!-- 메서드 이름이 selectCommentDefault이며, 매개변수는 map 타입이고, 반환타입이 CommentsDTO인 select쿼리문과 매핑(초기 게시글 수에 해당하는 댓글수) -->
 	<select id="selectCommentRow" parameterType="map" resultType="CommentsDTO">
 		select c.comments_number,c.comments_datetime,c.comments_content,c.user_number,c.post_number,u.user_id 
 		from tbl_comments c,tbl_post p,tbl_user u where c.post_number=p.post_number and c.user_number=u.user_number group by c.comments_number 
 		order by c.comments_datetime desc limit #{startIndex},1
 	</select>
 	
-	<!-- usernumber는 getsession으로 받아와서 추가해야된다. -->
+	<!-- 메서드 이름이 insertComment이며, 반환타입이 CommentsDTO인 insert쿼리문과 매핑(댓글 입력시) -->
 	<insert id="insertComment" parameterType="CommentsDTO">
 		insert into tbl_comments (comments_content,user_number,post_number) values (#{commentsContent},#{userNumber},#{postNumber})
 	</insert>
 	
-	<!-- usernumber는 getsession으로 받아와서 추가해야된다. -->
+	<!-- 메서드 이름이 updateComment이며, 반환타입이 CommentsDTO인 update쿼리문과 매핑(댓글 수정시) -->
 	<update id="updateComment" parameterType="CommentsDTO">
 		update tbl_comments set comments_content=#{commentsContent},comments_datetime=#{commentsDatetime} where comments_number=#{commentsNumber}
 	</update>
 	
+	<!-- 메서드 이름이 deleteComment이며, 반환타입이 CommentsDTO인 delete쿼리문과 매핑(댓글 삭제시) -->
 	<delete id="deleteComment" parameterType="_int">
 		delete from tbl_comments where comments_number=#{commentsNumber}
 	</delete>
 	
-	<!-- following쿼리문에서 재사용 -->
+	<!-- 메서드 이름이 selectFollowerCommentDefault이며, 매개변수는 map 타입이고, 반환타입이 CommentsDTO인 select쿼리문과 매핑(초기 팔로워에 해당하는 게시글 수) -->
 	<select id="selectFollowerCommentDefault" parameterType="_int" resultType="CommentsDTO">
 		select c.comments_number,c.comments_datetime,c.comments_content,c.user_number,c.post_number,u.user_id 
 		from tbl_comments c,tbl_post p,tbl_user u where c.post_number=p.post_number and c.user_number=u.user_number and p.user_number=#{userNumber} group by c.comments_number 
