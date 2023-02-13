@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapping되는 sql구문을 위한 태그이며, mapping되는 namespace는 유일해야하기 때문에 Post테이블명 사용 -->
 <mapper namespace="Post">
 
+	<!-- 메서드 이름이 selectPostDefault이며, 반환타입이 postDTO인 select쿼리문과 매핑(초기 게시글 수) -->
 	<select id="selectPostDefault" resultType="postDTO">
 		select post_number,post_content,post_datetime,p.user_number,u.user_id from 
 		tbl_post p join tbl_user u on p.user_number=u.user_number order by post_datetime desc limit 0,5
 	</select>
+	
+		<!-- 메서드 이름이 selectPostRow이며, 매개변수는 map 타입이고, 반환타입이 postDTO인 select쿼리문과 매핑(스크롤 이벤트시 추가되는 게시글수) -->
 	<select id="selectPostRow" parameterType="map" resultType="postDTO">
 		select post_number,post_content,post_datetime,p.user_number,u.user_id from 
 		tbl_post p join tbl_user u on p.user_number=u.user_number order by post_datetime desc limit #{startIndex},1
 	</select>
 	
+	<!-- 메서드 이름이 insertComment이며, 매개변수가 CommentsDTO인 insert쿼리문과 매핑(댓글 입력시) -->
 	<insert id="insertContent" parameterType = "postVO">
    insert into tbl_post 
    (post_content, user_number)
    values (#{postContent}, #{userNumber})
    </insert>
    
+   <!-- 메서드 이름이 selectCurrentSequence이며, 반환타입이 int인 select쿼리문과 매핑(최근 등록된 게시글 번호) -->
    <select id="selectCurrentSequence" resultType="_int">
       select last_insert_id()
    </select>
    
+   	<!-- 메서드 이름이 updatePost이며, 매개변수가 postDTO인 update쿼리문과 매핑(게시글 수정시) -->
    <update id="updatePost" parameterType="postDTO">
 		update tbl_post set post_content=#{postContent}, post_datetime=#{postDateTime} where post_number=#{postNumber}
    </update>
 	
+		<!-- 메서드 이름이 deletePost이며, 매개변수가 int인 delete쿼리문과 매핑(댓글 삭제시) -->
 	<delete id="deletePost" parameterType="_int">
 		delete from tbl_post where post_number=#{postNumber}
 	</delete>
 	
-	<!-- following쿼리문에서 재사용 -->
+	
+	<!-- following쿼리문에서 재사용, 메서드 이름이 selectFollowerDefault이며, 매개변수가 int, 반환타입이 postDTO인 select 쿼리문과 매핑(해당 유저의 팔로잉, 팔로우에 대한 초기 게시글수) -->
 	<select id="selectFollowerDefault" parameterType="_int" resultType="postDTO">
 		select post_number,post_content,post_datetime,p.user_number,u.user_id from 
 		tbl_post p join tbl_user u on p.user_number=u.user_number where p.user_number=#{userNumber} order by post_datetime desc limit 0,5;
