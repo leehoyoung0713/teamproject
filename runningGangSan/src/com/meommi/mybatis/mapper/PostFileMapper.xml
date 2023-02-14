@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapping되는 sql구문을 위한 태그이며, mapping되는 namespace는 유일해야하기 때문에 PostFile테이블명 사용 -->
 <mapper namespace="PostFile">
+
+	<!-- 메서드 이름이 selectPostfileDefault이며, 반환타입이 postFileVO인 select쿼리문과 매핑(초기 게시의 파일 수) -->
 	<select id="selectPostfileDefault" resultType="postFileVO" >
 		select post_file_number,post_file_system_name,post_file_origin_name,pf.post_number 
 		from tbl_post_file pf, tbl_post p,tbl_user u where pf.post_number=p.post_number and u.user_number=p.user_number
 	</select>
 
+	<!-- 메서드 이름이 selectPostfileRow이며, 매개변수는 int 타입이고, 반환타입이 postFileVO인 select쿼리문과 매핑(스크롤 이벤트시 추가되는 게시글의 파일수) -->
 	<select id="selectPostfileRow" parameterType="int" resultType="postFileVO">
 		select post_file_number,post_file_system_name,post_file_origin_name,pf.post_number 
 		from tbl_post_file pf, tbl_post p,tbl_user u where pf.post_number=p.post_number and u.user_number=p.user_number limit #{startIndex},1
 	</select>
 	
+	<!-- 메서드 이름이 insert이며, 매개변수가 PostFileVO인 insert쿼리문과 매핑(게시글 입력시 추가되는 파일수) -->
 	<insert id="insert" parameterType = "PostFileVO">
 		insert into tbl_post_file
 		(post_file_system_name, post_file_origin_name, post_number,user_number)
 		values(#{postFileSystemName}, #{postFileOriginName}, #{postNumber},#{userNumber})
 	</insert>
 	
-	<!-- following쿼리문에서 재사용 -->
+	
+	<!-- following쿼리문에서 재사용, 메서드 이름이 selectFollowerPostfileDefault이며, 매개변수가 int, 반환타입이 postFileVO인 select 쿼리문과 매핑(해당 유저의 팔로잉, 팔로우에 대한 초기 게시글의 파일수) -->
 	<select id="selectFollowerPostfileDefault" parameterType="_int" resultType="postFileVO">
 		select post_file_number,post_file_system_name,post_file_origin_name,p.post_number,pf.post_number,pf.user_number,u.user_number 
 		from tbl_post_file pf, tbl_post p,tbl_user u where pf.post_number=p.post_number and u.user_number=p.user_number and p.user_number=#{userNumber}
