@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+  <!-- 파일의 타이틀이며 프로젝트 명으로 설정한다. -->
   <display-name>runningGangSan</display-name>
+  
+  <!-- 서버의 루트 경로로 이동시 띄워줄 페이지 목록 -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -10,153 +14,299 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+    <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
    <servlet>
+   
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>AbandonedAnimalsFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.abandonedanimals.AbandonedAnimalsFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+    <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>AbandonedAnimalsFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.ab</url-pattern>
   </servlet-mapping>
   
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
   <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>CommentsFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.comments.CommentsFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>CommentsFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.co</url-pattern>
   </servlet-mapping>
   
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
   <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>FavoritePlaceFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.favoritePlace.FavoritePlaceFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>FavoritePlaceFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.fa</url-pattern>
   </servlet-mapping>
   
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
    <servlet>
+   
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>FeedSearchFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.feedsearch.FeedSearchFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>FeedSearchFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.fe</url-pattern>
   </servlet-mapping>
   
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
   <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>FollowFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.follow.FollowFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>FollowFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.fo</url-pattern>
   </servlet-mapping>
   
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
     <servlet>
+    
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>FuneralFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.funeral.FuneralFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>FuneralFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.fu</url-pattern>
   </servlet-mapping>
   
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
   <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>MainFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.main.MainFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>MainFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.ma</url-pattern>
   </servlet-mapping>
   
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
   <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>PlaceReviewFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.placeReview.PlaceReviewFrontController</servlet-class>
   </servlet>
   
-      <servlet-mapping>
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
+  <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>PlaceReviewFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.pl</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
+  <servlet>
+    
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>PostFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.post.PostFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>PostFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.po</url-pattern>
   </servlet-mapping>
   
-      <servlet>
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
+  <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>PostFileFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.postFile.PostFileFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>PostFileFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.pf</url-pattern>
   </servlet-mapping>
   
-        <servlet>
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
+  <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>ReviewFileFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.reviewFile.ReviewFileFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>ReviewFileFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.re</url-pattern>
   </servlet-mapping>
   
-      <servlet>
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
+  <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>UserFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.user.UserFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>UserFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.us</url-pattern>
   </servlet-mapping>
   
-	<servlet>
+  <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 수행할 서블릿 클래스를 설정하는 태그 -->
+  <servlet>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>UserFileFrontController</servlet-name>
+     
+     <!-- 브라우저에서 요청하는 매핑 이름에 대해 실제 실행되는 서블릿 클래스를 지정하는 태그 -->
      <servlet-class>com.meommi.app.userFile.UserFileFrontController</servlet-class>
   </servlet>
   
+  <!-- 브라우저에서 요청하는 논리적 서블릿을 설정 -->
   <servlet-mapping>
+  
+     <!-- <servlet>과 <servlet-mapping>을 연결시켜주는 태그 -->
      <servlet-name>UserFileFrontController</servlet-name>
+     
+     <!-- 클라이언트가 요청하는 논리적 서블릿 이름(현재 디렉터리를 최상위 디렉터리로 인식) -->
      <url-pattern>*.uf</url-pattern>
   </servlet-mapping>
   
   <error-page>
+  
+    <!-- 예외 타입 설정-->
   	<exception-type>java.lang.NumberFormatException</exception-type>
+  	
+  	<!-- 예외 페이지 -->
   	<location>/error/ArithmeticException.jsp</location>
   </error-page>
   
   <error-page>
+  
+    <!-- HTTP 상태 코드 500(내부 서버 오류)-->
   	<error-code>500</error-code>
+  	
+  	<!-- 에러 페이지 -->
   	<location>/error/500.jsp</location>
   </error-page>
   
   <error-page>
+  
+    <!-- HTTP 상태 코드 404(페이지 없음)-->
   	<error-code>404</error-code>
+  	
+  	<!-- 에러 페이지 -->
   	<location>/error/404.jsp</location>
   </error-page>
   
   <error-page>
+  
+  	<!-- HTTP 상태 코드 401(권한 없음)-->
   	<error-code>401</error-code>
+  	
+  	<!-- 에러 페이지 -->
   	<location>/error/401.jsp</location>
   </error-page>
 </web-app>
