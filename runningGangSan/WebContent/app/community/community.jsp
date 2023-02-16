@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/community/community.css">
 </head>
 <body>
+
+<!-- 로그인 여부에 따라 띄워줄 헤더 페이지 설정 -->
 <%
        String userId = (String)session.getAttribute("userId");
 	   int userNumberss = Integer.valueOf(String.valueOf(session.getAttribute("userNumber")));
@@ -33,6 +35,8 @@
 			<div id="app-container">
 				<div id="app-content">
 					<div id="contents">
+					
+					<!-- 전체/팔로우/팔로잉 버튼 목록 -->
 						<div id="tab-container">
 							<div class="tab-button">
 								<button>전체</button>
@@ -48,7 +52,6 @@
 							</div> -->
 						</div>
 
-						
 						<div id="friends-container">
 							<div
 								style="line-height: 28px; letter-spacing: -.3px; font-size: 16px; font-weight: 700; font-style: normal; line-height: 24px; display: flex; flex-direction: row;">김인영님,
@@ -302,7 +305,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/community/community.js"></script>
+
+<!-- 유저 번호를 자바스크리트에서 사용하기 위한 변수 선언 -->
 <script>let userNumber = "${sessionScope.userNumber}"</script>
+
 <script>var $context = "${pageContext.request.contextPath}"</script>
 <script>var $requestURL = "${pageContext.request.requestURL}"</script>
 <script>var $requestURI = "${pageContext.request.requestURI}"</script>
