@@ -358,7 +358,7 @@ var textinit="";
 var text="";
 
 showDefault();
-//기본으로 
+//유저가 커뮤니티 페이지 접속시 띄워줄 게시글, 파일 및 댓글의 기본 목록들
 function showDefault(){
 	console.log(Outputindex);
 	console.log(Increment);
@@ -394,6 +394,7 @@ function showDefault(){
 	});//ajax(post)
 }
 
+//유저가 커뮤니티 페이지 접속시 띄워줄 게시글, 파일 및 댓글의 기본 목록들
 function showDefaultList(resultpost,resultcomment,resultfile){
 	
 	resultpost.forEach(post=>{
@@ -488,6 +489,7 @@ function showDefaultList(resultpost,resultcomment,resultfile){
 	});
 }
 
+/* 스크롤 다운시 추가되는 게시글에 대한 파일 및 댓글들을 기존 목록에 추가하여 표시 */
 function showScrollDown(){
 	console.log(Outputindex);
 	console.log(Increment);
@@ -670,10 +672,12 @@ $parentposition.on("click",".replyEnter",function(){
 		alert('댓글을 입력해주세요.');
 		return;
 	}
+	
+	/* XSS 공격에 대비한 보안 설정 */
 	replytext=replytext.replace(/\</g,'&lt;');
 	replytext=replytext.replace(/\>/g,'&gt;');
 	
-	//
+	//비동기 처리를 통한 게시글의 댓글 추가
 	$.ajax({
 		url:"${pageContext.request.contextPath}/meommi/CommentRegistration.co",
 		type:"get",
