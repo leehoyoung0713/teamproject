@@ -684,6 +684,8 @@ $parentposition.on("click",".replyEnter",function(){
 		data:{content:replytext,postNumber:$(this).data("number")},
 		success:function(){
 			console.log("comment reply enter success");
+			
+			/* 입력되었던 텍스트를 지우기 위한 설정 */
 			text="";
  			textinit="";
 			showDefault();
@@ -695,6 +697,8 @@ $parentposition.on("click",".replyEnter",function(){
 });
 /* =====================댓글 수정 준비 버튼=================== */
 $parentposition.on("click","span.replyCommentModifyReadyWrap",function(){
+	
+	/* 다른 수정버튼을 클릭한 경우 */
 	if(!commentContentContains){
 		alert('수정중인 댓글이 있습니다.');
 		return;
@@ -704,11 +708,13 @@ $parentposition.on("click","span.replyCommentModifyReadyWrap",function(){
 	const buttons=buttonWrap.children();
 	const content=buttons.eq(1);
 	
+	/* 수정버튼 클릭시 수정확인 버튼과 수정취소 버튼을 표시하기 위한 설정 */
 	buttons.eq(3).hide();
 	buttons.eq(4).show();
 	buttons.eq(5).hide();
 	buttons.eq(6).show();
 	
+	/* 댓글 수정 버튼 클릭 시 내용을 변경할 수 있게 입력 태그에 내용 표시 */
 	content.replaceWith("<textarea>"+content.text()+"</textarea>");
 });
 /* ==============댓글 수정 취소 버튼============= */
@@ -717,11 +723,13 @@ $parentposition.on("click","span.replyCommentCancelWrap",function(){
 	const buttons=buttonWrap.children();
 	const content=buttons.eq(1);
 	
+	/* 댓글 수정 취소 버튼 클릭시 수정 버튼과 제거 버튼 표시를 위한 설정 */
 	buttons.eq(3).show();
 	buttons.eq(4).hide();
 	buttons.eq(5).show();
 	buttons.eq(6).hide();
 	
+	/* 해당 내용을 표시하고 수정이 되지 않게 하기위한 pre태그로 설정 */
 	content.replaceWith("<pre>"+content.text()+"</pre>");
 	commentContentContains=true;
 });
@@ -731,8 +739,11 @@ $parentposition.on("click","span.replyCommentModifyWrap",function(){
 	const commentContent=buttonWrap.children().eq(1);
 	const commentNumber=$(this).data("number");
 	
+	/* XSS 공격을 방지하기 위한 설정 */
 	var modifyComment=commentContent.val().replace(/\</g,'&lt;');
 	modifyComment=modifyComment.replace(/\>/g,'&gt;');
+	
+	/* 댓글 입력 내용이 없는 경우의 유효성 검사 */
 	if(!modifyComment){
 		alert('댓글을 입력해주세요.');
 		return;
@@ -744,6 +755,8 @@ $parentposition.on("click","span.replyCommentModifyWrap",function(){
 		success:function(){
 			console.log("comment modify success");
 			postContentContains=true;
+			
+			/* 댓글 수정 버튼 클릭 후 내용을 초기화하기 위한 설정 */
 			text="";
  			textinit="";
 			showDefault();
@@ -760,6 +773,8 @@ $parentposition.on("click","span.replyCommentDeleteWrap",function(){
 		data:{commentNumber:$(this).data("number")},
 		success:function(){
 			console.log("comment delete success");
+			
+			/* 댓글 삭제 후 내용을 초기화하기 위한 설정 */
 			text="";
  			textinit="";
 			showDefault();
@@ -773,16 +788,21 @@ $parentposition.on("click","span.postContentReadyModifyWrap",function(){
 	const buttonWrap=$(this).closest("div.postContents");
 	const buttons=buttonWrap.children();
 	const content=buttonWrap.prev().prev().find(":first-child");
+	
+	/* 다른 수정 버튼 클릭 여부 검사 */
 	if(!postContentContains){
 		alert('수정중인 게시글이 있습니다.');
 		return;
 	}
 	postContentContains=false;
+	
+	/* 수정 준비 버튼 클릭시 수정 확인 버튼과 수정 취소 버튼 표시를 위한 설정 */
 	buttons.eq(0).hide();
 	buttons.eq(1).show();
 	buttons.eq(2).hide();
 	buttons.eq(3).show();
 	
+	/* 수정 준비 버튼 클릭 시 내용 표시를 위한 입력태그에 내용 표시 */
 	content.replaceWith("<textarea>"+content.text()+"</textarea>");
 });
 /* ==============게시글 수정 취소 버튼============= */
@@ -791,11 +811,13 @@ $parentposition.on("click","span.postContentReadyModifyWrap",function(){
 	const buttons=buttonWrap.children();
 	const content=buttonWrap.prev().prev().find(":first-child");
 	
+	/* 수정 취소 버튼 클릭시 수정 준비 버튼과 제거 버튼 표시를 위한 설정 */
 	buttons.eq(0).show();
 	buttons.eq(1).hide();
 	buttons.eq(2).show();
 	buttons.eq(3).hide();
 	
+	/* 수정 취소 버튼 클릭시 내용 표시를 위한 pre태그 설정 */
 	content.replaceWith("<pre>"+content.text()+"</pre>");
 	postContentContains=true;
 });
@@ -806,8 +828,11 @@ $parentposition.on("click","span.postContentReadyModifyWrap",function(){
  	const postContent=buttonWrap.prev().prev().find(":first-child");
  	const postNumber=$(this).data("number");
  	
+ 	/* 게시글 수정후 XSS 공격을 방지하기 위한 설정 */
  	var modifyPost=postContent.val().replace(/\</g,'&lt;');
  	modifyPost=modifyPost.replace(/\>/g,'&gt;');
+ 	
+ 	/* 게시글 내용 입력 여부 확인 */
  	if(!modifyPost){
  		alert('게시글 내용을 입력해주세요.');
  		return;
@@ -835,6 +860,8 @@ $parentposition.on("click","span.postContentDeleteWrap",function(){
  		data:{postNumber:$(this).data("number")},
  		success:function(){
  			console.log("post delete success");
+ 			
+ 			/* 게시글 삭제 후 내용을 초기화하기 위한 설정 */
  			text="";
  			textinit="";
  			showDefault();
@@ -852,8 +879,11 @@ $("#contentResistButton").click(function (event) {
 	/*formData 생성 및 key, value 삽입*/
 	   var formData = new FormData();
 	
+	 /* XSS 공격을 방지하기 위한 설정 */
 	  var tempPostContent=$("textarea[name='feedMainWriting']").val().replace(/\</gi,'&lt;');
 	  tempPostContent=tempPostContent.replace(/\>/gi,'&gt;');
+	  
+	  /* 게시글 입력 여부 확인을 위한 설정 */
 	   if(!tempPostContent){
 			alert('게시글 내용을 입력해주세요.');
 			return;
@@ -896,12 +926,15 @@ $("#contentResistButton").click(function (event) {
 $(".tab-button").on("click",function(){
 	var keyword=$(this).find("button").text();
 	console.log("keyword:"+keyword);
+	
+	/* 전체 버튼 클릭시 표시를 위한 설정 */
 	if(keyword=="전체"){
 		text="";
 		textinit="";
 		console.log("전체 사용된거 이용");
 		showDefault();
 	}
+	/* 내팔로잉 버튼 클릭시 표시를 위한 설정 */
 	else if(keyword=="내팔로잉"){
 		$.ajax({
 			url:"${pageContext.request.contextPath}/meommi/PostlistFollowing.po",
@@ -932,6 +965,8 @@ $(".tab-button").on("click",function(){
 			}
 		});
 	}
+	
+	/* 내팔로워 버튼 클릭시 표시를 위한 설정 */
 	else if(keyword=="내팔로워"){
 		$.ajax({
 			url:"${pageContext.request.contextPath}/meommi/PostlistFollower.po",
