@@ -892,6 +892,7 @@ $("#contentResistButton").click(function (event) {
 	
 	   console.log(tempPostContent);
 	
+	   /* 3개의 파일을 등록하기 위한 설정 */
 	   formData.append("postContent",tempPostContent)
 	   formData.append("postFile1", $('.realUpload')[0].files[0])  
 	   formData.append("postFile2", $('.realUpload')[0].files[1])
