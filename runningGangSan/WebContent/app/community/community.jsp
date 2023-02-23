@@ -18,7 +18,7 @@
 <body>
 
 <!-- 로그인 여부에 따라 띄워줄 헤더 페이지 설정 -->
-<%
+<% 
        String userId = (String)session.getAttribute("userId");
 	   int userNumberss = Integer.valueOf(String.valueOf(session.getAttribute("userNumber")));
 	   /* int userNumber=3; */
