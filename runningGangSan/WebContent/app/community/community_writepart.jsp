@@ -88,7 +88,7 @@ let postContent = $("textarea[name='feedMainWriting']").val();
 /* let userNumber = 1; */
 let context = "${pageContext.request.contextPath}";
 
- 
+<!-- 파일 취소 버튼 클릭시 작동 부분 -->
 /*  function cancelFile(fileName){
     $("input#" + fileName).val("");
     $("img#" + fileName + "Img").attr("src", "${pageContext.request.contextPath}/images/filePlus.png");
