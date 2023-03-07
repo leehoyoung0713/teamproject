@@ -83,6 +83,8 @@
                         <!-- 게시글 작성 부분 끝 -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<!-- 입력된 게시글의 내용부분 -->
 <script>
 let postContent = $("textarea[name='feedMainWriting']").val();
 /* let userNumber = 1; */
