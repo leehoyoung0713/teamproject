@@ -9,7 +9,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 작성</title> 
+<title>게시글 작성</title>
+
+<!-- 폰트 사용을 위한 설정 --> 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/community/community.css">
