@@ -102,6 +102,8 @@ let context = "${pageContext.request.contextPath}";
     $("img#" + fileName + "Img").attr("src", "${pageContext.request.contextPath}/images/filePlus.png");
  } */
 </script>
+
+<!-- 커뮤니티 페이지의 일부 기능을 분리한 모듈화 작업 -->
 <script
    src="${pageContext.request.contextPath}/assets/js/community/community.js"></script>
 </html>
